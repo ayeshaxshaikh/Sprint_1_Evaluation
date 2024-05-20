@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>E-Commerce</title>
+    <script
+      src="https://kit.fontawesome.com/552fd6d8e9.js"
+      crossorigin="anonymous"
+    ></script>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+      body {
+        font-family: "Poppins", sans-serif;
+      }
+      header {
+        height: 70px;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+      }
+      header .navbar nav {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+        text-transform: uppercase;
+        font-size: 14px;
+        font-weight: 600;
+      }
+      header .navbar nav i {
+        font-size: 10px;
+      }
+      header .icons {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+        font-size: 20px;
+      }
+
+      .container {
+        width: 400px;
+        background-color: #fff;
+        padding: 20px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+      }
+
+      h1 {
+        font-size: 14px;
+        text-align: center;
+        margin-bottom: 20px;
+      }
+
+      .tab-buttons {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 20px;
+      }
+
+      .tab-button {
+        flex: 1;
+        padding: 10px;
+        border: 1px solid #ccc;
+        cursor: pointer;
+        background-color: #fff;
+      }
+
+      .tab-button.active {
+        background-color: #007b5e;
+        color: #fff;
+        border-color: #007b5e;
+      }
+
+      .social-buttons {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 20px;
+      }
+
+      .social-button {
+        flex: 1;
+        padding: 10px;
+        margin: 0 5px;
+        cursor: pointer;
+        border: 1px solid #ccc;
+        background-color: #f0f0f0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .register-form {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .name-fields {
+        display: flex;
+        justify-content: space-between;
+      }
+      .social-button {
+        width: 20px;
+        border-radius: 5px;
+        background: #fff;
+        font-size: 16px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .social-button i {
+        margin-right: 10px;
+        font-size: 16px;
+      }
+      .name-fields input {
+        flex: 1;
+        margin-right: 10px;
+      }
+
+      .name-fields input:last-child {
+        margin-right: 0;
+      }
+
+      input {
+        padding: 10px;
+        margin-bottom: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+      }
+
+      small {
+        font-size: 12px;
+        color: #888;
+        margin-bottom: 10px;
+      }
+
+      .gender-fields {
+        display: flex;
+        align-items: center;
+        margin-bottom: 20px;
+      }
+
+      .gender-fields label {
+        margin-right: 10px;
+      }
+
+      .register-button {
+        padding: 10px;
+        background-color: #007b5e;
+        color: #fff;
+        border: none;
+        cursor: pointer;
+        border-radius: 4px;
+        font-size: 16px;
+      }
+
+      .register-button:hover {
+        background-color: #005f47;
+      }
+
+      p {
+        text-align: center;
+      }
+
+      p a {
+        color: #007b5e;
+        text-decoration: none;
+      }
+      .card-container {
+        display: flex;
+        width: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
+        background-color: #fff;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+
+      .sidebar {
+        width: 25%;
+        padding: 20px;
+        border-right: 1px solid #ccc;
+      }
+
+      .sidebar h2 {
+        font-size: 18px;
+        margin-bottom: 10px;
+      }
+
+      .sidebar input[type="text"] {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 20px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+      }
+
+      .sidebar ul {
+        list-style: none;
+        padding: 0;
+      }
+
+      .sidebar ul li {
+        margin-bottom: 10px;
+      }
+
+      .sidebar ul li input {
+        margin-right: 10px;
+      }
+
+      .sidebar ul li a {
+        color: #007b5e;
+        text-decoration: none;
+      }
+
+      .main-content {
+        width: 75%;
+        padding: 20px;
+      }
+
+      .breadcrumb {
+        font-size: 14px;
+        color: #666;
+        margin-bottom: 10px;
+      }
+
+      .main-content h1 {
+        font-size: 14px;
+        margin-bottom: 20px;
+      }
+
+      .sorting {
+        display: flex;
+        justify-content: flex-end;
+        margin-bottom: 20px;
+      }
+
+      .sorting label {
+        margin-right: 10px;
+      }
+
+      .sorting select {
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+      }
+
+      .product-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+      }
+
+      .product {
+        width: calc(25% - 20px);
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        overflow: hidden;
+        background-color: #fff;
+      }
+
+      .product img {
+        width: 100%;
+        height: auto;
+      }
+
+      .product h2 {
+        font-size: 16px;
+        margin: 10px;
+      }
+
+      .product p {
+        font-size: 14px;
+        margin: 10px;
+        color: #333;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <img
+        src="https://www.thesouledstore.com/static/img/newlogo.8dcc6cc.png"
+        width="100"
+      />
+      <div class="navbar">
+        <nav>
+          <div>
+            summer'24
+            <sup style="color: #ed2d2f; font-size: 10px; font-weight: 700"
+              >new</sup
+            >
+          </div>
+          <div>topwear <i class="fa-solid fa-chevron-down"></i></div>
+          <div>bottomwear <i class="fa-solid fa-chevron-down"></i></div>
+          <div>
+            shoes & accessories <i class="fa-solid fa-chevron-down"></i>
+          </div>
+          <div>restocked</div>
+          <div>theme <i class="fa-solid fa-chevron-down"></i></div>
+        </nav>
+      </div>
+      <div class="icons">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <i class="fa-solid fa-user"></i>
+        <i class="fa-regular fa-heart"></i>
+        <i class="fa-solid fa-bag-shopping"></i>
+      </div>
+    </header>
+    <div
+      style="
+        height: 40px;
+        background: #e71318;
+        text-transform: uppercase;
+        text-align: center;
+        color: #fff;
+        font-size: 24px;
+      "
+    >
+      homegrown indian brand
+    </div>
+    <div
+      style="
+        height: 70px;
+        text-transform: capitalize;
+        font-size: 26px;
+        text-align: center;
+        padding-top: 10px;
+      "
+    >
+      over <span style="font-weight: 700">6 million</span> happy customers
+    </div>
+    <section>
+      <img src="layout.JPG" width="100%" height="400" />
+    </section>
+    <div style="display: flex; align-items: center; justify-content: center">
+      <div class="container">
+        <div class="register-box">
+          <h1>Register with The Souled Store</h1>
+          <div class="tab-buttons">
+            <button class="tab-button">Login</button>
+            <button class="tab-button active">Register</button>
+          </div>
+          <div class="social-buttons">
+            <button class="social-button">
+              <i class="fa-brands fa-square-facebook"></i>Facebook
+            </button>
+            <button class="social-button">
+              <i class="fa-brands fa-google"></i> Google
+            </button>
+          </div>
+          <p>- OR -</p>
+          <form class="register-form">
+            <div class="name-fields">
+              <input type="text" placeholder="First Name" required />
+              <input type="text" placeholder="Last Name" required />
+            </div>
+            <input type="email" placeholder="Email ID" required />
+            <input type="password" placeholder="Choose New Password" required />
+            <input type="password" placeholder="Confirm Password" required />
+            <input
+              type="text"
+              placeholder="Please enter your birthdate"
+              required
+            />
+            <small>(Avail 10% Birthday discount as a member)</small>
+            <input
+              type="tel"
+              placeholder="+91 Mobile Number (For order status update)"
+              required
+            />
+            <div class="gender-fields">
+              <label>Gender</label>
+              <input type="radio" name="gender" value="male" required /> Male
+              <input type="radio" name="gender" value="female" required />
+              Female
+              <input type="radio" name="gender" value="other" required /> Other
+            </div>
+            <button type="submit" class="register-button">Register</button>
+          </form>
+          <p>Already a Customer? <a href="#">Login</a></p>
+        </div>
+      </div>
+    </div>
+    <div class="card-container">
+      <aside class="sidebar">
+        <h2>Products</h2>
+        <input type="text" placeholder="Search for Products" />
+        <ul>
+          <li><input type="checkbox" /> Women Boyfriend Shirts</li>
+          <li><input type="checkbox" /> Women Bralette</li>
+          <li><input type="checkbox" /> Women Cargo Jeans</li>
+          <li><input type="checkbox" /> Women Cargo Joggers</li>
+          <li><input type="checkbox" /> Women Cropped Tops</li>
+          <li><input type="checkbox" /> Women Denim Jackets</li>
+          <li><input type="checkbox" /> Women Jeans</li>
+          <li><input type="checkbox" /> Women Joggers</li>
+          <li><input type="checkbox" /> Women Oversized Cropped T-Shirts</li>
+          <li><input type="checkbox" /> Women Oversized Shirt Dresses</li>
+          <li><a href="#">+ 6 more</a></li>
+        </ul>
+      </aside>
+      <main class="main-content">
+        <div class="breadcrumb">
+          Home / The Souled Store / Restocked Womenswear
+        </div>
+        <h1>Restocked Womenswear - 43 items</h1>
+        <div class="sorting">
+          <label for="sorting">Select Sorting Options</label>
+          <select id="sorting">
+            <option value="relevance">Relevance</option>
+            <option value="price-low-high">Price: Low to High</option>
+            <option value="price-high-low">Price: High to Low</option>
+          </select>
+        </div>
+        <div class="product-list">
+          <div class="product">
+            <img
+              src="https://prod-img.thesouledstore.com/public/theSoul/storage/mobile-cms-media-prod/product-images/new-arrivals-20_ANgWDso.jpg?format=webp&w=360&dpr=1.0"
+              alt="White Bralette Top"
+            />
+            <h2>White Bralette Top</h2>
+            <p>Women Bralette</p>
+            <p>₹ 699 MRP incl. of all taxes</p>
+          </div>
+          <div class="product">
+            <img
+              src="https://prod-img.thesouledstore.com/public/theSoul/storage/mobile-cms-media-prod/product-images/new-arrivals-21_8GX45hu.jpg?format=webp&w=360&dpr=1.0"
+              alt="Cotton Linen: Lavender"
+            />
+            <h2>Cotton Linen: Lavender</h2>
+            <p>Women Oversized Shirts</p>
+            <p>₹ 1399 MRP incl. of all taxes</p>
+          </div>
+          <div class="product">
+            <img
+              src="https://prod-img.thesouledstore.com/public/theSoul/storage/mobile-cms-media-prod/product-images/new-arrivals-3_SvK6DtF.jpg?format=webp&w=360&dpr=1.0"
+              alt="Korean Pants: Camel"
+            />
+            <h2>Korean Pants: Camel</h2>
+            <p>Women Pants</p>
+            <p>₹ 1299 MRP incl. of all taxes</p>
+          </div>
+          <div class="product">
+            <img
+              src="https://prod-img.thesouledstore.com/public/theSoul/storage/mobile-cms-media-prod/product-images/new-arrivals-12_YWEAGlR.jpg?format=webp&w=360&dpr=1.0"
+              alt="Powerpuff Girls: Sugar & Spice"
+            />
+            <h2>Powerpuff Girls: Sugar & Spice</h2>
+            <p>Women Summer Shirts</p>
+            <p>₹ 999 MRP incl. of all taxes</p>
+          </div>
+        </div>
+      </main>
+    </div>
+    <footer style="height: 60px; display: flex; justify-content: space-between; align-items: center; background-color: #E6E7E8;">
+        <div style="margin-left: 50px;"><img src="https://www.thesouledstore.com/static/img/newlogo.8dcc6cc.png" width="50" alt="logo"></div>
+        <div style="font-weight: 600;">&copy; The Souled Store 2024-25</div>
+        <div style="display: flex; align-items: center; justify-content: center; gap: 20px; font-size: 24px; margin-right: 50px;">
+            <i class="fa-brands fa-facebook"></i>
+            <i class="fa-brands fa-instagram"></i>
+            <i class="fa-brands fa-twitter"></i>
+        </div>
+    </footer>
+  </body>
+</html>
